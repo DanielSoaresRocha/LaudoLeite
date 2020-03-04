@@ -1,5 +1,6 @@
 <template>
   <q-page class="flex flex-center">
+    hello world
     <img
       round
       alt="Quasar logo"
