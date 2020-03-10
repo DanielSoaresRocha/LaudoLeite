@@ -3,7 +3,7 @@
     <div class="vertical-top logo q-pa-md text-h3">
       Cadastrar laudo
     </div>
-    <div class="q-pa-xl row">
+    <div class="q-pr-xl q-pl-xl row">
       <div class="col-6 q-pa-xs">
         <q-input
           standout="bg-teal text-white"
@@ -14,7 +14,7 @@
       <div class="col-6 q-pa-xs">
         <q-input
           filled
-          v-model="date"
+          v-model="dateColeta"
           mask="date"
           :rules="['date']"
         >
@@ -30,7 +30,7 @@
               >
                 <q-date
                   mask="DD-MM-YYYY"
-                  v-model="date"
+                  v-model="dateColeta"
                   @input="() => $refs.qDateProxy.hide()"
                 />
               </q-popup-proxy>
@@ -48,7 +48,7 @@
       <div class="col-6 q-pr-xs q-pl-xs">
         <q-input
           filled
-          v-model="time"
+          v-model="timeColeta"
           mask="time"
           :rules="['time']"
         >
@@ -61,12 +61,34 @@
                 transition-show="scale"
                 transition-hide="scale"
               >
-                <q-time v-model="time" />
+                <q-time v-model="timeColeta" />
               </q-popup-proxy>
             </q-icon>
           </template>
         </q-input>
       </div>
+    </div>
+    <div class="q-pr-xl q-pl-xl text-subtitle1">
+      <div class="text-h6">
+        Produto:
+      </div>
+      <q-option-group
+        v-model="groupProduto"
+        :options="optionsProduct"
+        color="primary"
+        inline
+      />
+    </div>
+    <div class="q-pr-xl q-pl-xl text-subtitle1">
+      <div class="text-h6">
+        Análises solicitadas:
+      </div>
+      <q-option-group
+        v-model="groupAnalise"
+        :options="optionsAnalise"
+        color="primary"
+        inline
+      />
     </div>
   </q-page>
 </template>
@@ -76,9 +98,83 @@ export default {
   data () {
     return {
       text: '',
-      date: '28/04/2000',
+      dateColeta: '28/04/2000',
       responsibleCollection: '',
-      time: '10:56'
+      timeColeta: '10:56',
+      groupProduto: 'op1',
+      groupAnalise: 'ot1',
+      optionsProduct: [
+        {
+          label: 'Leite cru',
+          value: 'op1'
+        },
+        {
+          label: 'Leite Pasteurizado',
+          value: 'op2'
+        },
+        {
+          label: 'Queijo',
+          value: 'op3'
+        },
+        {
+          label: 'Nata',
+          value: 'op4'
+        },
+        {
+          label: 'Creme de leite',
+          value: 'op5'
+        },
+        {
+          label: 'Sorvete',
+          value: 'op6'
+        },
+        {
+          label: 'Doce de leite',
+          value: 'op7'
+        },
+        {
+          label: 'Requeijão',
+          value: 'op8'
+        },
+        {
+          label: 'Manteiga',
+          value: 'op9'
+        },
+        {
+          label: 'Iorgute',
+          value: 'op10'
+        },
+        {
+          label: 'Bebida láctea',
+          value: 'op11'
+        },
+        {
+          label: 'Coalhada',
+          value: 'op12'
+        },
+        {
+          label: 'Bebida láctea',
+          value: 'op13'
+        },
+        {
+          label: 'Outro',
+          value: 'op14'
+        }
+      ],
+      optionsAnalise: [
+        {
+          label: 'CPP',
+          value: 'ot1'
+        },
+        {
+          label: 'Coliformes a 30° - 35° C',
+          value: 'ot2'
+        },
+        {
+          label: 'Coliformes a 45° C',
+          value: 'ot3'
+        }
+      ]
     }
   }
 }
