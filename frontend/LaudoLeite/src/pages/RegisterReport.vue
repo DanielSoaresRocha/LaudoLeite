@@ -17,6 +17,7 @@
           v-model="dateColeta"
           mask="date"
           :rules="['date']"
+          label="Data da coleta"
         >
           <template v-slot:append>
             <q-icon
@@ -51,6 +52,7 @@
           v-model="timeColeta"
           mask="time"
           :rules="['time']"
+          label="Hora da coleta"
         >
           <template v-slot:append>
             <q-icon
@@ -90,6 +92,29 @@
         inline
       />
     </div>
+    <div class="q-pr-xl q-pl-xl text-subtitle1">
+      <div class="text-h6">
+        Dados do produto:
+      </div>
+      <div class="row q-pt-md">
+        <div class="col-6 q-pa-xs">
+          <q-input
+            standout="bg-teal text-white"
+            v-model="idiarn"
+            label="N° SIF/IDIARN/SIM"
+          />
+        </div>
+        <div class="col-6 q-pa-xs">
+          Tipo da amostra:
+          <q-option-group
+            v-model="groupTipoAmostra"
+            :options="optionsAmostra"
+            color="primary"
+            inline
+          />
+        </div>
+      </div>
+    </div>
   </q-page>
 </template>
 
@@ -103,6 +128,8 @@ export default {
       timeColeta: '10:56',
       groupProduto: 'op1',
       groupAnalise: 'ot1',
+      groupTipoAmostra: '',
+      idiarn: '',
       optionsProduct: [
         {
           label: 'Leite cru',
@@ -173,6 +200,16 @@ export default {
         {
           label: 'Coliformes a 45° C',
           value: 'ot3'
+        }
+      ],
+      optionsAmostra: [
+        {
+          label: 'individual',
+          value: 'oa1'
+        },
+        {
+          label: 'Não individual',
+          value: 'oa2'
         }
       ]
     }
