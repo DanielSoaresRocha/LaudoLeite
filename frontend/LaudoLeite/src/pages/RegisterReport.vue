@@ -16,9 +16,8 @@
           standout="bg-primary text-white"
           filled
           v-model="dateColeta"
-          mask="date"
-          :rules="['date']"
           label="Data da coleta"
+          mask="##/##/####"
         >
           <template v-slot:append>
             <q-icon
@@ -120,8 +119,7 @@
             standout="bg-primary text-white"
             filled
             v-model="dateProducao"
-            mask="date"
-            :rules="['date']"
+            mask="##/##/####"
             label="Data da produção"
           >
             <template v-slot:append>
@@ -149,8 +147,7 @@
             standout="bg-primary text-white"
             filled
             v-model="dateValidade"
-            mask="date"
-            :rules="['date']"
+            mask="##/##/####"
             label="Data da validade"
           >
             <template v-slot:append>
@@ -164,7 +161,7 @@
                   transition-hide="scale"
                 >
                   <q-date
-                    mask="date"
+                    mask="##/##/####"
                     v-model="dateValidade"
                     @input="() => $refs.qDateProxy.hide()"
                   />
@@ -224,8 +221,7 @@
             standout="bg-primary text-white"
             filled
             v-model="dateRecebimento"
-            mask="date"
-            :rules="['date']"
+            mask="##/##/####"
             label="Data do recebimento"
           >
             <template v-slot:append>
