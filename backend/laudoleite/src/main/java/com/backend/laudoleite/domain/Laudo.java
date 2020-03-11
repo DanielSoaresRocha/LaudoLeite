@@ -23,7 +23,7 @@ public class Laudo implements Serializable {
     private String cliente;
     private String analise;
     private String resultado;
-    private String ordem_serviço;
+    private String ordem_servico;
 
     private String responsavel_coleta;
     private Date data_coleta;

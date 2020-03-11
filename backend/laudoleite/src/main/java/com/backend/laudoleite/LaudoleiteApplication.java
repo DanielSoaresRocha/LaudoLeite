@@ -27,12 +27,12 @@ public class LaudoleiteApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 
 
-		Laudo l2= new FisicoQuimico(2,"Daniel","FISICOQUIMICO","OK","01001","PEDRO",
+		Laudo l2= new FisicoQuimico(null,"Daniel","FISICOQUIMICO","OK","01001","PEDRO",
 				sdf.parse("10/03/2020 10:32"),"12:30","A","SIM",
 				"LUCAS","23","Leite ninho","Natal","produtos",2,0,"amostragem",sdf.parse("10/03/2020 10:32"));
 
 
-		Laudo l1 = new Microbiologica(1,"Wesley","MICROBIOLOGICO","OK","01001","PEDRO",
+		Laudo l1 = new Microbiologica(null,"Wesley","MICROBIOLOGICO","OK","01001","PEDRO",
 				sdf.parse("10/03/2020 10:32"),"12:30","A","SIM",
 				"LUCAS","23","Leite","32323",  sdf.parse("10/03/2020 10:32"),  sdf.parse("10/03/2020 10:32"),true,
 				12,"Lucas",  sdf.parse("10/03/2020 10:32"),"13:23","OK","25");

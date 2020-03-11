@@ -3,10 +3,13 @@ package com.backend.laudoleite.resources;
 import com.backend.laudoleite.domain.FisicoQuimico;
 import com.backend.laudoleite.domain.Laudo;
 import com.backend.laudoleite.domain.Microbiologica;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import com.backend.laudoleite.services.LaudoService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import java.net.URI;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -16,23 +19,22 @@ import java.util.List;
 @RestController
 @RequestMapping(value = "/laudos")
 public class LaudoResource {
-    SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy HH:mm");
 
-    @RequestMapping(method = RequestMethod.GET)
-    public List<Laudo> hello() throws ParseException {
+    @Autowired
+    private LaudoService service;
 
-        Laudo l2= new FisicoQuimico(2,"Daniel","FISICOQUIMICO","OK","01001","PEDRO",
-                sdf.parse("10/03/2020 10:32"),"12:30","A","SIM",
-        "LUCAS","23","Leite ninho","Natal","produtos",2,0,"amostragem",sdf.parse("10/03/2020 10:32"));
-
-
-        Laudo l1 = new Microbiologica(1,"Wesley","MICROBIOLOGICO","OK","01001","PEDRO",
-                sdf.parse("10/03/2020 10:32"),"12:30","A","SIM",
-                "LUCAS","23","Leite","32323",  sdf.parse("10/03/2020 10:32"),  sdf.parse("10/03/2020 10:32"),true,
-                12,"Lucas",  sdf.parse("10/03/2020 10:32"),"13:23","OK","25");
-        List<Laudo> laudos= new ArrayList<>();
-        laudos.add(l1);
-        laudos.add(l2);
-        return laudos;
+    @RequestMapping(method=RequestMethod.POST)
+    public ResponseEntity<Void> insert(@RequestBody Laudo obj) {
+        Laudo laudo = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(laudo.getId()).toUri();
+        return ResponseEntity.created(uri).build();
     }
+
+    @RequestMapping(value="/{id}", method=RequestMethod.GET)
+    public ResponseEntity<?> find(@PathVariable Integer id) {
+        Laudo obj = service.find(id);
+        return ResponseEntity.ok().body(obj);
+    }
+
 }
