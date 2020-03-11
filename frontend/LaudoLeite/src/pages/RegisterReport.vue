@@ -113,6 +113,70 @@
             inline
           />
         </div>
+        <div class="col-6 q-pr-xs q-pl-xs">
+          <q-input
+            filled
+            v-model="dateProducao"
+            mask="date"
+            :rules="['date']"
+            label="Data da produção"
+          >
+            <template v-slot:append>
+              <q-icon
+                name="event"
+                class="cursor-pointer"
+              >
+                <q-popup-proxy
+                  ref="qDateProxy"
+                  transition-show="scale"
+                  transition-hide="scale"
+                >
+                  <q-date
+                    mask="DD-MM-YYYY"
+                    v-model="dateProducao"
+                    @input="() => $refs.qDateProxy.hide()"
+                  />
+                </q-popup-proxy>
+              </q-icon>
+            </template>
+          </q-input>
+        </div>
+        <div class="col-4 q-pr-xs q-pl-xs">
+          <q-input
+            filled
+            v-model="dateValidade"
+            mask="####/##/##"
+            :rules="['####/##/##']"
+            label="Data da validade"
+          >
+            <template v-slot:append>
+              <q-icon
+                name="event"
+                class="cursor-pointer"
+              >
+                <q-popup-proxy
+                  ref="qDateProxy"
+                  transition-show="scale"
+                  transition-hide="scale"
+                >
+                  <q-date
+                    mask="####/##/##"
+                    v-model="dateValidade"
+                    @input="() => $refs.qDateProxy.hide()"
+                  />
+                </q-popup-proxy>
+              </q-icon>
+            </template>
+          </q-input>
+        </div>
+        <div class="col-2 q-pr-xs">
+          <q-input
+            standout="bg-teal text-white"
+            v-model="quantidade"
+            label="Quantidade: "
+            type="number"
+          />
+        </div>
       </div>
     </div>
   </q-page>
@@ -124,12 +188,15 @@ export default {
     return {
       text: '',
       dateColeta: '28/04/2000',
+      dateProducao: '',
+      dateValidade: '28/04/2000',
       responsibleCollection: '',
       timeColeta: '10:56',
       groupProduto: 'op1',
       groupAnalise: 'ot1',
       groupTipoAmostra: '',
       idiarn: '',
+      quantidade: 0,
       optionsProduct: [
         {
           label: 'Leite cru',
