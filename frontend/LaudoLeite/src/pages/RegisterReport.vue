@@ -145,8 +145,8 @@
           <q-input
             filled
             v-model="dateValidade"
-            mask="####/##/##"
-            :rules="['####/##/##']"
+            mask="date"
+            :rules="['date']"
             label="Data da validade"
           >
             <template v-slot:append>
@@ -160,7 +160,7 @@
                   transition-hide="scale"
                 >
                   <q-date
-                    mask="####/##/##"
+                    mask="date"
                     v-model="dateValidade"
                     @input="() => $refs.qDateProxy.hide()"
                   />
@@ -175,6 +175,30 @@
             v-model="quantidade"
             label="Quantidade: "
             type="number"
+          />
+        </div>
+      </div>
+    </div>
+    <div class="q-pr-xl q-pl-xl text-subtitle1">
+      <div class="text-h6">
+        Condições da amostra no recebimento:
+      </div>
+      <div class="row q-pt-md">
+        <div class="col-3 q-pa-xs">
+          <q-input
+            standout="bg-teal text-white"
+            v-model="temperatura"
+            label="Temperatura (°C)"
+            type="number"
+          />
+        </div>
+        <div class="col-9 q-pa-xs">
+          Estado:
+          <q-option-group
+            v-model="groupCondicao"
+            :options="optionsCondicion"
+            color="primary"
+            inline
           />
         </div>
       </div>
@@ -194,9 +218,11 @@ export default {
       timeColeta: '10:56',
       groupProduto: 'op1',
       groupAnalise: 'ot1',
+      groupCondicao: 'oc1',
       groupTipoAmostra: '',
       idiarn: '',
       quantidade: 0,
+      temperatura: 0,
       optionsProduct: [
         {
           label: 'Leite cru',
@@ -277,6 +303,24 @@ export default {
         {
           label: 'Não individual',
           value: 'oa2'
+        }
+      ],
+      optionsCondicion: [
+        {
+          label: 'Congelado sólido',
+          value: 'oc1'
+        },
+        {
+          label: 'Cristais de gelo',
+          value: 'oc2'
+        },
+        {
+          label: 'Resfriado',
+          value: 'oc3'
+        },
+        {
+          label: 'Decomposição',
+          value: 'oc4'
         }
       ]
     }
