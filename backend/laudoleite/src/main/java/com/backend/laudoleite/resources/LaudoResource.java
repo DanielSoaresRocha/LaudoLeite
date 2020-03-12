@@ -23,8 +23,16 @@ public class LaudoResource {
     @Autowired
     private LaudoService service;
 
-    @RequestMapping(method=RequestMethod.POST)
-    public ResponseEntity<Void> insert(@RequestBody Laudo obj) {
+    @RequestMapping(path = {"/microbiologica"},method=RequestMethod.POST)
+    public ResponseEntity<Void> insert(@RequestBody Microbiologica obj) {
+        Laudo laudo = service.insert(obj);
+        URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+                .path("/{id}").buildAndExpand(laudo.getId()).toUri();
+        return ResponseEntity.created(uri).build();
+    }
+
+    @RequestMapping(path = {"/fisicoQuimico"},method=RequestMethod.POST)
+    public ResponseEntity<Void> insert(@RequestBody FisicoQuimico obj) {
         Laudo laudo = service.insert(obj);
         URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
                 .path("/{id}").buildAndExpand(laudo.getId()).toUri();

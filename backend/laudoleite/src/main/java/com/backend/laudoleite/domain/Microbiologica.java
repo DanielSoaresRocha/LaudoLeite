@@ -20,7 +20,7 @@ public class Microbiologica extends Laudo{
     private Date data_validacao;
     private Boolean individual;
     private Integer quantidade;
-    private String responsavel_recebimento;
+    private String responsavel_recebimento1;
     private Date data_recebimento;
     private String hora_recebimento;
     private String ensaio;
@@ -35,7 +35,7 @@ public class Microbiologica extends Laudo{
         this.data_validacao = data_validacao;
         this.individual = individual;
         this.quantidade = quantidade;
-        this.responsavel_recebimento = responsavel_recebimento1;
+        this.responsavel_recebimento1= responsavel_recebimento1;
         this.data_recebimento = data_recebimento;
         this.hora_recebimento = hora_recebimento;
         this.ensaio = ensaio;
