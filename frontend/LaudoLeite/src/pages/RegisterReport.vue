@@ -80,6 +80,7 @@
         :options="optionsProduct"
         color="primary"
         inline
+        @click="enviarAlerta"
       />
     </div>
     <div class="q-pr-xl q-pl-xl text-subtitle1">
@@ -269,6 +270,19 @@
           </q-input>
         </div>
       </div>
+      <q-list
+        bordered
+        separator
+      >
+        <q-item
+          clickable
+          v-ripple
+          v-for="amostra in amostras"
+          :key="amostra.id"
+        >
+          <q-item-section>Single line item</q-item-section>
+        </q-item>
+      </q-list>
     </div>
   </q-page>
 </template>
@@ -277,23 +291,24 @@
 export default {
   data () {
     return {
+      amostras: [{ key: 0, num: 0 }, { key: 1, num: 1 }],
       text: '',
       responsavelRecebimento: '',
-      dateColeta: '28/04/2000',
+      dateColeta: '',
       dateProducao: '',
       dateValidade: '',
       dateRecebimento: '',
       horaRecebimento: '',
       timeRecebimento: '',
       responsibleCollection: '',
-      timeColeta: '10:56',
+      timeColeta: '',
       groupProduto: '',
       groupAnalise: '',
       groupCondicao: '',
       groupTipoAmostra: '',
       idiarn: '',
-      quantidade: 0,
-      temperatura: 0,
+      quantidade: '',
+      temperatura: '',
       ordemServico: '',
       optionsProduct: [
         {
@@ -395,6 +410,11 @@ export default {
           value: 'oc4'
         }
       ]
+    }
+  },
+  methods: {
+    enviarAlerta () {
+      console.log(this.groupProduto)
     }
   }
 }
