@@ -274,8 +274,8 @@
         Amostras:
       </div>
       <q-btn
-        color="Adicionar amostra"
-        label="Primary"
+        color="blue"
+        label="Adicionar amostra"
         @click="adicionarAmostra"
       />
       <q-list
