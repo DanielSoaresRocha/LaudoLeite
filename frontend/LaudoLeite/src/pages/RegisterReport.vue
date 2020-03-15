@@ -270,6 +270,14 @@
           </q-input>
         </div>
       </div>
+      <div class="text-h6">
+        Amostras:
+      </div>
+      <q-btn
+        color="Adicionar amostra"
+        label="Primary"
+        @click="adicionarAmostra"
+      />
       <q-list
         bordered
         separator
@@ -280,7 +288,7 @@
           v-for="amostra in amostras"
           :key="amostra.id"
         >
-          <q-item-section>Single line item</q-item-section>
+          <q-item-section>Amostra {{amostra.key}}</q-item-section>
         </q-item>
       </q-list>
     </div>
@@ -291,7 +299,7 @@
 export default {
   data () {
     return {
-      amostras: [{ key: 0, num: 0 }, { key: 1, num: 1 }],
+      amostras: [],
       text: '',
       responsavelRecebimento: '',
       dateColeta: '',
@@ -415,6 +423,9 @@ export default {
   methods: {
     enviarAlerta () {
       console.log(this.groupProduto)
+    },
+    adicionarAmostra () {
+      this.amostras.push({ key: 2, num: 2 })
     }
   }
 }
