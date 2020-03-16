@@ -288,7 +288,22 @@
           v-for="amostra in amostras"
           :key="amostra.id"
         >
-          <q-item-section>Amostra {{amostra.key}}</q-item-section>
+          <q-item-section>
+            <q-input
+              standout="bg-primary text-white"
+              v-model="amostra.numAmostra"
+              label="Número da amostra: "
+              type="number"
+            />
+          </q-item-section>
+          <q-item-section>
+            <q-input
+              standout="bg-primary text-white"
+              v-model="amostra.identificador"
+              label="Identificador da amostra: "
+              type="number"
+            />
+          </q-item-section>
         </q-item>
       </q-list>
     </div>
@@ -299,6 +314,7 @@
 export default {
   data () {
     return {
+      numAmostra: 0,
       amostras: [],
       text: '',
       responsavelRecebimento: '',
@@ -425,7 +441,8 @@ export default {
       console.log(this.groupProduto)
     },
     adicionarAmostra () {
-      this.amostras.push({ key: 2, num: 2 })
+      this.amostras.push({ numAmostra: this.numAmostra + 1, identificador: 0, resultado: '' })
+      this.numAmostra++
     }
   }
 }
