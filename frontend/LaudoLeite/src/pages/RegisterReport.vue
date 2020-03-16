@@ -313,6 +313,16 @@
           </q-item-section>
         </q-item>
       </q-list>
+      <div
+        class="q-pa-sm"
+        style="width: 100%; text-align: center"
+      >
+        <q-btn
+          class="vertical-middle"
+          color="green"
+          label="Enviar laudo"
+        />
+      </div>
     </div>
   </q-page>
 </template>
