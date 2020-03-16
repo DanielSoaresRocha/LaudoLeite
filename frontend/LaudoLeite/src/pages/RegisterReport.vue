@@ -1,7 +1,7 @@
 <template>
   <q-page>
     <div class="vertical-top logo q-pa-md text-h3">
-      Cadastrar laudo
+      Solicitar análise
     </div>
     <div class="q-pr-xl q-pl-xl row">
       <div class="col-6 q-pa-xs">
@@ -463,7 +463,9 @@ export default {
     },
     excluirAmostra () {
       this.amostras.pop()
-      this.numAmostra--
+      if (this.numAmostra > 1) {
+        this.numAmostra--
+      }
     }
   }
 }
