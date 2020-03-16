@@ -274,9 +274,16 @@
         Amostras:
       </div>
       <q-btn
+        class="q-ma-sm"
         color="blue"
         label="Adicionar amostra"
         @click="adicionarAmostra"
+      />
+      <q-btn
+        class="q-ma-sm"
+        color="red"
+        label="Excluir amostra"
+        @click="excluirAmostra"
       />
       <q-list
         bordered
@@ -314,7 +321,7 @@
 export default {
   data () {
     return {
-      numAmostra: 0,
+      numAmostra: 1,
       amostras: [],
       text: '',
       responsavelRecebimento: '',
@@ -441,8 +448,12 @@ export default {
       console.log(this.groupProduto)
     },
     adicionarAmostra () {
-      this.amostras.push({ numAmostra: this.numAmostra + 1, identificador: 0, resultado: '' })
+      this.amostras.push({ numAmostra: this.numAmostra, identificador: 0, resultado: '' })
       this.numAmostra++
+    },
+    excluirAmostra () {
+      this.amostras.pop()
+      this.numAmostra--
     }
   }
 }
