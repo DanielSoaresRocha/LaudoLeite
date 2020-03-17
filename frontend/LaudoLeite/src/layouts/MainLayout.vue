@@ -68,6 +68,11 @@ export default {
           label: 'Solicitar análise',
           icon: 'business',
           path: '/RegisterReport'
+        },
+        {
+          label: 'Cadastrar-se',
+          icon: 'account_box',
+          path: '/Register'
         }
       ]
     }
