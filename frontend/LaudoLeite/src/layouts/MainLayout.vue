@@ -73,6 +73,10 @@ export default {
           label: 'Cadastrar-se',
           icon: 'account_box',
           path: '/Register'
+        }, {
+          label: 'LaudosPendentes',
+          icon: 'account_box',
+          path: '/ViewReports'
         }
       ]
     }
