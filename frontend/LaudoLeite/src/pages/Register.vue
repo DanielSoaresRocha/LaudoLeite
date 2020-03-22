@@ -62,6 +62,6 @@ export default {
 .tela {
   width: 100%;
   height: 100%;
-  background-color: green;
+  background-color: aqua;
 }
 </style>

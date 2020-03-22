@@ -74,7 +74,7 @@ export default {
           icon: 'account_box',
           path: '/Register'
         }, {
-          label: 'LaudosPendentes',
+          label: 'Laudos Pendentes',
           icon: 'account_box',
           path: '/ViewReports'
         }
