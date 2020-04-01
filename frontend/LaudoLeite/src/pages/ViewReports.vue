@@ -24,8 +24,13 @@
 </template>
 
 <script>
+import api from '../services/api'
+
 export default {
   name: 'ViewReports',
+  created () {
+    this.getReports()
+  },
   data () {
     return {
       laudosPendentes: [
@@ -33,6 +38,12 @@ export default {
         { id: '', nome: 'laudo 2', tipo: 'físico químico' },
         { id: '', nome: 'laudo 3', tipo: 'microbiológico' }
       ]
+    }
+  },
+  methods: {
+    async getReports () {
+      const response = await api.get('/laudos/1', {})
+      console.log(response.data)
     }
   }
 }

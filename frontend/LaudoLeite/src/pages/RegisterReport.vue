@@ -7,7 +7,7 @@
       <div class="col-6 q-pa-xs">
         <q-input
           standout="bg-primary text-white"
-          v-model="text"
+          v-model="laudo.cliente"
           label="Cliente"
         />
       </div>
@@ -15,7 +15,7 @@
         <q-input
           standout="bg-primary text-white"
           filled
-          v-model="dateColeta"
+          v-model="laudo.data_coleta"
           label="Data da coleta"
           mask="##/##/####"
         >
@@ -31,7 +31,7 @@
               >
                 <q-date
                   mask="DD-MM-YYYY"
-                  v-model="dateColeta"
+                  v-model="laudo.data_coleta"
                   @input="() => $refs.qDateProxy.hide()"
                 />
               </q-popup-proxy>
@@ -42,7 +42,7 @@
       <div class="col-6 q-pr-xs q-pl-xs">
         <q-input
           standout="bg-primary text-white"
-          v-model="responsibleCollection"
+          v-model="laudo.responsavel_coleta"
           label="Responsável pela coleta"
         />
       </div>
@@ -50,7 +50,7 @@
         <q-input
           standout="bg-primary text-white"
           filled
-          v-model="timeColeta"
+          v-model="laudo.hora_coleta"
           mask="time"
           :rules="['time']"
           label="Hora da coleta"
@@ -64,7 +64,7 @@
                 transition-show="scale"
                 transition-hide="scale"
               >
-                <q-time v-model="timeColeta" />
+                <q-time v-model="laudo.hora_coleta" />
               </q-popup-proxy>
             </q-icon>
           </template>
@@ -76,11 +76,10 @@
         Produto:
       </div>
       <q-option-group
-        v-model="groupProduto"
+        v-model="laudo.produto"
         :options="optionsProduct"
         color="primary"
         inline
-        @click="enviarAlerta"
       />
     </div>
     <div class="q-pr-xl q-pl-xl text-subtitle1">
@@ -88,7 +87,7 @@
         Análises solicitadas:
       </div>
       <q-option-group
-        v-model="groupAnalise"
+        v-model="laudo.analise_solicitada"
         :options="optionsAnalise"
         color="primary"
         inline
@@ -102,14 +101,14 @@
         <div class="col-6 q-pa-xs">
           <q-input
             standout="bg-primary text-white"
-            v-model="idiarn"
+            v-model="laudo.sif_idiarn_sim"
             label="N° SIF/IDIARN/SIM"
           />
         </div>
         <div class="col-6 q-pa-xs">
           Tipo da amostra:
           <q-option-group
-            v-model="groupTipoAmostra"
+            v-model="laudo.individual"
             :options="optionsAmostra"
             color="primary"
             inline
@@ -119,7 +118,7 @@
           <q-input
             standout="bg-primary text-white"
             filled
-            v-model="dateProducao"
+            v-model="laudo.data_producao"
             mask="##/##/####"
             label="Data da produção"
           >
@@ -135,7 +134,7 @@
                 >
                   <q-date
                     mask="DD-MM-YYYY"
-                    v-model="dateProducao"
+                    v-model="laudo.data_producao"
                     @input="() => $refs.qDateProxy.hide()"
                   />
                 </q-popup-proxy>
@@ -147,7 +146,7 @@
           <q-input
             standout="bg-primary text-white"
             filled
-            v-model="dateValidade"
+            v-model="laudo.data_validacao"
             mask="##/##/####"
             label="Data da validade"
           >
@@ -163,7 +162,7 @@
                 >
                   <q-date
                     mask="##/##/####"
-                    v-model="dateValidade"
+                    v-model="laudo.data_validacao"
                     @input="() => $refs.qDateProxy.hide()"
                   />
                 </q-popup-proxy>
@@ -174,7 +173,7 @@
         <div class="col-2 q-pr-xs">
           <q-input
             standout="bg-primary text-white"
-            v-model="quantidade"
+            v-model="laudo.quantidade"
             label="Quantidade: "
             type="number"
           />
@@ -189,7 +188,7 @@
         <div class="col-3 q-pa-xs">
           <q-input
             standout="bg-primary text-white"
-            v-model="temperatura"
+            v-model="laudo.temperatura"
             label="Temperatura (°C)"
             type="number"
           />
@@ -197,7 +196,7 @@
         <div class="col-9 q-pa-xs">
           Estado:
           <q-option-group
-            v-model="groupCondicao"
+            v-model="laudo.estado"
             :options="optionsCondicion"
             color="primary"
             inline
@@ -206,14 +205,14 @@
         <div class="col-12 q-pa-xs">
           <q-input
             standout="bg-primary text-white"
-            v-model="ordemServico"
+            v-model="laudo.ordem_servico"
             label="Ordem de serviço"
           />
         </div>
         <div class="col-4 q-pa-xs">
           <q-input
             standout="bg-primary text-white"
-            v-model="responsavelRecebimento"
+            v-model="laudo.responsavel_recebimento"
             label="Responsável pelo recebimento: "
           />
         </div>
@@ -221,7 +220,7 @@
           <q-input
             standout="bg-primary text-white"
             filled
-            v-model="dateRecebimento"
+            v-model="laudo.data_recebimento"
             mask="##/##/####"
             label="Data do recebimento"
           >
@@ -237,7 +236,7 @@
                 >
                   <q-date
                     mask="DD-MM-YYYY"
-                    v-model="dateRecebimento"
+                    v-model="laudo.data_recebimento"
                     @input="() => $refs.qDateProxy.hide()"
                   />
                 </q-popup-proxy>
@@ -249,7 +248,7 @@
           <q-input
             standout="bg-primary text-white"
             filled
-            v-model="timeRecebimento"
+            v-model="laudo.hora_recebimento"
             mask="time"
             :rules="['time']"
             label="Hora do recebimento"
@@ -263,7 +262,7 @@
                   transition-show="scale"
                   transition-hide="scale"
                 >
-                  <q-time v-model="timeRecebimento" />
+                  <q-time v-model="laudo.hora_recebimento" />
                 </q-popup-proxy>
               </q-icon>
             </template>
@@ -321,6 +320,7 @@
           class="vertical-middle"
           color="green"
           label="Enviar laudo"
+          @click="register"
         />
       </div>
     </div>
@@ -333,26 +333,33 @@ import api from '../services/api'
 export default {
   data () {
     return {
+      laudo: {
+        analise: '', // objeto
+        analise_solicitada: '',
+        cliente: '', // objeto
+        data_coleta: '',
+        data_producao: '',
+        data_validacao: '',
+        ensaio: '', // falta incluir na interface
+        especie: '', // falta incluir na interface
+        hora_coleta: '',
+        hora_recebimento: '',
+        id: 0,
+        individual: false,
+        ordem_servico: '', // objeto
+        produto: '',
+        quantidade: 0,
+        responsavel_coleta: '',
+        responsavel_recebimento: '',
+        resultado: '', // objeto: lista de resultados
+        sif_idiarn_sim: '',
+        temperatura: '',
+        volume: '', // falta incluir na interface
+        estado: '',
+        data_recebimento: ''
+      },
       numAmostra: 1,
       amostras: [],
-      text: '',
-      responsavelRecebimento: '',
-      dateColeta: '',
-      dateProducao: '',
-      dateValidade: '',
-      dateRecebimento: '',
-      horaRecebimento: '',
-      timeRecebimento: '',
-      responsibleCollection: '',
-      timeColeta: '',
-      groupProduto: '',
-      groupAnalise: '',
-      groupCondicao: '',
-      groupTipoAmostra: '',
-      idiarn: '',
-      quantidade: '',
-      temperatura: '',
-      ordemServico: '',
       optionsProduct: [
         {
           label: 'Leite cru',
@@ -428,11 +435,11 @@ export default {
       optionsAmostra: [
         {
           label: 'individual',
-          value: 'oa1'
+          value: true
         },
         {
           label: 'Não individual',
-          value: 'oa2'
+          value: false
         }
       ],
       optionsCondicion: [
@@ -456,9 +463,6 @@ export default {
     }
   },
   methods: {
-    enviarAlerta () {
-      console.log(this.groupProduto)
-    },
     adicionarAmostra () {
       this.amostras.push({ numAmostra: this.numAmostra, identificador: 0, resultado: '' })
       this.numAmostra++
@@ -469,8 +473,13 @@ export default {
         this.numAmostra--
       }
     },
-    register () {
-      api.get('/', { opa: 'ok' })
+    async register () {
+      try {
+        await api.post('/laudos/microbiologica', this.laudo)
+        alert('Realizado com sucesso!!')
+      } catch (e) {
+        alert('Erro ao tentar isto')
+      }
     }
   }
 }
