@@ -328,6 +328,8 @@
 </template>
 
 <script>
+import api from '../services/api'
+
 export default {
   data () {
     return {
@@ -466,6 +468,9 @@ export default {
       if (this.numAmostra > 1) {
         this.numAmostra--
       }
+    },
+    register () {
+      api.get('/', { opa: 'ok' })
     }
   }
 }
