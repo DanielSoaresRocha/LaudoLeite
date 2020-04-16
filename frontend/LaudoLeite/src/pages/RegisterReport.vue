@@ -148,7 +148,7 @@
             filled
             v-model="laudo.data_validacao"
             mask="##/##/####"
-            label="Data da validade"
+            label="Data da produção"
           >
             <template v-slot:append>
               <q-icon
@@ -161,7 +161,7 @@
                   transition-hide="scale"
                 >
                   <q-date
-                    mask="##/##/####"
+                    mask="DD-MM-YYYY"
                     v-model="laudo.data_validacao"
                     @input="() => $refs.qDateProxy.hide()"
                   />

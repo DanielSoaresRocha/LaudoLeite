@@ -34,9 +34,9 @@ export default {
   data () {
     return {
       laudosPendentes: [
-        { id: '', nome: 'laudo 1', tipo: 'microbiológico' },
-        { id: '', nome: 'laudo 2', tipo: 'físico químico' },
-        { id: '', nome: 'laudo 3', tipo: 'microbiológico' }
+        { id: '1', nome: 'laudo 1', tipo: 'microbiológico' },
+        { id: '2', nome: 'laudo 2', tipo: 'físico químico' },
+        { id: '3', nome: 'laudo 3', tipo: 'microbiológico' }
       ]
     }
   },
