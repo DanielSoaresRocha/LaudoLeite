@@ -32,6 +32,7 @@ public class Laudo implements Serializable {
     private String analise_solicitada;
     private String responsavel_recebimento;
     private String temperatura;
+    private String situacao;
 
     @Override
     public int hashCode() {

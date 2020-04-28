@@ -1,11 +1,12 @@
 package com.backend.laudoleite.services;
 
-import com.backend.laudoleite.domain.FisicoQuimico;
 import com.backend.laudoleite.domain.Laudo;
 import com.backend.laudoleite.repositories.LaudoRepository;
 import com.backend.laudoleite.services.exceptions.ObjectNotFoundException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import java.util.List;
+
 
 import java.util.Optional;
 
@@ -26,6 +27,8 @@ public class LaudoService {
                 "Objeto não encontrado! Id: " + id + ", Tipo: " + Laudo.class.getName()));
     }
 
-
+    public List<Laudo> findAll() {
+        return repo.findAll();
+    }
 
 }

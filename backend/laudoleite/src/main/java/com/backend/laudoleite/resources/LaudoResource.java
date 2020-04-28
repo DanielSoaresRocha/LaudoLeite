@@ -52,4 +52,12 @@ public class LaudoResource {
         return ResponseEntity.ok().body(obj);
     }
 
+    @ApiOperation("Listar todos laudos cadastrados")
+    @RequestMapping(method = RequestMethod.GET)
+    public ResponseEntity<List<Laudo>> findAll() {
+        List<Laudo> list= service.findAll();
+        return ResponseEntity.ok().body(list);
+
+    }
+
 }

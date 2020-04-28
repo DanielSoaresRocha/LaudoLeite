@@ -27,8 +27,8 @@ public class Microbiologica extends Laudo{
     private String volume;
 
 
-    public Microbiologica(Integer id, String cliente, String analise, String resultado, String ordem_serviço, String responsavel_coleta, Date data_coleta, String hora_coleta, String especie, String analise_solicitada, String responsavel_recebimento, String temperatura, String produto, String sif_idiarn_sim, Date data_producao, Date data_validacao, Boolean individual, Integer quantidade, String responsavel_recebimento1, Date data_recebimento, String hora_recebimento, String ensaio, String volume) {
-        super(id, cliente, analise, resultado, ordem_serviço, responsavel_coleta, data_coleta, hora_coleta, especie, analise_solicitada, responsavel_recebimento, temperatura);
+    public Microbiologica(Integer id, String cliente, String analise, String resultado, String ordem_serviço, String responsavel_coleta, Date data_coleta, String hora_coleta, String especie, String analise_solicitada, String responsavel_recebimento, String temperatura, String situacao, String produto, String sif_idiarn_sim, Date data_producao, Date data_validacao, Boolean individual, Integer quantidade, String responsavel_recebimento1, Date data_recebimento, String hora_recebimento, String ensaio, String volume) {
+        super(id, cliente, analise, resultado, ordem_serviço, responsavel_coleta, data_coleta, hora_coleta, especie, analise_solicitada, responsavel_recebimento, temperatura, situacao);
         this.produto = produto;
         this.sif_idiarn_sim = sif_idiarn_sim;
         this.data_producao = data_producao;
