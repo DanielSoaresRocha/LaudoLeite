@@ -48,6 +48,7 @@
                 clickable
                 v-close-popup
                 icon="info"
+                @click="$router.push(`/report/${Number(laudo.id)}`)"
               >
                 <q-tooltip
                   :delay="500"

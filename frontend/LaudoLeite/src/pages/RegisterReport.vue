@@ -148,7 +148,7 @@
             filled
             v-model="laudo.data_validacao"
             mask="##/##/####"
-            label="Data da produção"
+            label="Data da validade"
           >
             <template v-slot:append>
               <q-icon
