@@ -22,7 +22,7 @@
                 clickable
                 v-close-popup
                 icon="done"
-                @click="showAnalyzeDialog(laudo)"
+                @click="showApprovedDialog(laudo)"
               >
                 <q-tooltip
                   :delay="500"
@@ -35,6 +35,7 @@
                 clickable
                 v-close-popup
                 icon="close"
+                @click="showDeniedDialog(laudo)"
               >
                 <q-tooltip
                   :delay="500"
@@ -62,7 +63,7 @@
         </q-item>
       </q-list>
     </div>
-    <q-dialog v-model="showAnalyze">
+    <q-dialog v-model="showApproved">
       <q-card style="width: 700px; max-width: 80vw;">
         <q-card-section>
           <div class="col">
@@ -74,13 +75,45 @@
               <q-btn
                 label="cancelar"
                 color="red"
-                @click="showAnalyze = false"
+                @click="showApproved = false"
                 clickable
               />
               <q-btn
                 @click="approveReservation()"
                 label="confirmar"
                 color="green"
+              />
+            </div>
+          </div>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+    <q-dialog v-model="showDenied">
+      <q-card style="width: 700px; max-width: 80vw;">
+        <q-card-section>
+          <div class="col">
+            <center>
+              <h5>Deseja negar a solicitação de análise para {{laudo.cliente}}?</h5>
+            </center>
+            <br>
+            <q-input
+              v-model="justification"
+              filled
+              type="textarea"
+              label="Justificativa"
+            />
+            <div class="q-pa-md q-gutter-md row justify-end">
+              <q-btn
+                label="cancelar"
+                color="red"
+                @click="showDenied = false"
+                clickable
+              />
+              <q-btn
+                @click="cancelReservation()"
+                label="confirmar"
+                color="green"
+                clickable
               />
             </div>
           </div>
@@ -101,9 +134,10 @@ export default {
   data () {
     return {
       laudosPendentes: [],
+      showDenied: false,
       showApproved: false,
-      showAnalyze: false,
-      laudo: {}
+      laudo: {},
+      justification: ''
     }
   },
   methods: {
@@ -111,8 +145,12 @@ export default {
       const response = await api.get('/laudos', {})
       return response.data
     },
-    showAnalyzeDialog (laudo) {
-      this.showAnalyze = true
+    showApprovedDialog (laudo) {
+      this.showApproved = true
+      this.laudo = laudo
+    },
+    showDeniedDialog (laudo) {
+      this.showDenied = true
       this.laudo = laudo
     }
   }
