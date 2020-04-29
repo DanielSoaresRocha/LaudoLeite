@@ -1,5 +1,6 @@
 package com.backend.laudoleite.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,6 +20,7 @@ public class FisicoQuimico extends Laudo{
     private Integer amostras_nao_coletadas;
     private Integer amostras_nao_analizadas;
     private String amostragem;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="Brazil/East")
     private Date data_processamento;
 
 

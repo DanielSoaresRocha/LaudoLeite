@@ -2,6 +2,7 @@ package com.backend.laudoleite.domain;
 
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -26,6 +27,7 @@ public class Laudo implements Serializable {
     private String ordem_servico;
 
     private String responsavel_coleta;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="Brazil/East")
     private Date data_coleta;
     private String  hora_coleta;
     private String especie;
