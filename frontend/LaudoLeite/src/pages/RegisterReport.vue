@@ -17,7 +17,7 @@
           filled
           v-model="laudo.data_coleta"
           label="Data da coleta"
-          mask="##/##/####"
+          mask="##-##-####"
         >
           <template v-slot:append>
             <q-icon
@@ -119,7 +119,7 @@
             standout="bg-primary text-white"
             filled
             v-model="laudo.data_producao"
-            mask="##/##/####"
+            mask="##-##-####"
             label="Data da produção"
           >
             <template v-slot:append>
@@ -147,7 +147,7 @@
             standout="bg-primary text-white"
             filled
             v-model="laudo.data_validacao"
-            mask="##/##/####"
+            mask="##-##-####"
             label="Data da validade"
           >
             <template v-slot:append>
@@ -221,7 +221,7 @@
             standout="bg-primary text-white"
             filled
             v-model="laudo.data_recebimento"
-            mask="##/##/####"
+            mask="##-##-####"
             label="Data do recebimento"
           >
             <template v-slot:append>
@@ -334,7 +334,7 @@ export default {
   data () {
     return {
       laudo: {
-        analise: '', // objeto
+        analise: 'MICROBIOLOGICO', // objeto
         analise_solicitada: '',
         cliente: '', // objeto
         data_coleta: '',
@@ -476,7 +476,7 @@ export default {
     async register () {
       try {
         await api.post('/laudos/microbiologica', this.laudo)
-        alert('Realizado com sucesso!!')
+        this.$router.push('/ViewReports')
       } catch (e) {
         alert('Erro ao tentar isto')
       }

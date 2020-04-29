@@ -1,5 +1,6 @@
 package com.backend.laudoleite.domain;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -16,11 +17,14 @@ public class Microbiologica extends Laudo{
 
     private String produto;
     private String sif_idiarn_sim;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="Brazil/East")
     private Date data_producao;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="Brazil/East")
     private Date data_validacao;
     private Boolean individual;
     private Integer quantidade;
     private String responsavel_recebimento1;
+    @JsonFormat(shape=JsonFormat.Shape.STRING, pattern="dd-MM-yyyy", timezone="Brazil/East")
     private Date data_recebimento;
     private String hora_recebimento;
     private String ensaio;
