@@ -3,9 +3,12 @@
 </template>
 
 <script>
+import api from '../services/api'
+
 export default {
-  created () {
-    console.log(this.$route.params.id)
+  async created () {
+    const laudo = await api.get(`/laudos/${this.$route.params.id}`)
+    console.log(laudo.data)
   },
   name: 'Report',
   data () {
