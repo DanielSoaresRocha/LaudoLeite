@@ -11,8 +11,10 @@
     "lint": "eslint --ext .js,.vue src",
     "test": "echo \"No test specified\" && exit 0",
     "dev": "quasar dev",
+    "build:pwa": "quasar build -m pwa",
     "build": "quasar build",
-    "build:pwa": "quasar build -m pwa"
+    "start": "node server.js",
+    "heroku-postbuild": "yarn && yarn build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
