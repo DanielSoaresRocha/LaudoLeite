@@ -14,7 +14,7 @@
     "build:pwa": "quasar build -m pwa",
     "build": "quasar build",
     "start": "node server.js",
-    "heroku-postbuild": "yarn && yarn build"
+    "heroku-postbuild": "cd client && yarn && yarn run build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
