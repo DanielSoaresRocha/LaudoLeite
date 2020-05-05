@@ -13,8 +13,8 @@
     "dev": "quasar dev",
     "build:pwa": "quasar build -m pwa",
     "build": "quasar build",
-    "start": "cd frontend/LaudoLeite/ && node server.js",
-    "heroku-postbuild": "cd frontend/LaudoLeite/ && yarn && yarn build"
+    "start": "node server.js",
+    "heroku-postbuild": "yarn && yarn build"
   },
   "dependencies": {
     "@quasar/extras": "^1.0.0",
