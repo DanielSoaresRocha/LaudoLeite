@@ -129,6 +129,7 @@
 
 <script>
 import api from '../services/api'
+// finalmente com build
 
 export default {
   async created () {
