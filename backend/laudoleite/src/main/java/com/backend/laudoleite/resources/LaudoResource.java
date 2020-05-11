@@ -60,4 +60,12 @@ public class LaudoResource {
 
     }
 
+    @ApiOperation("Deletar todos os laudos (Serviço para testes")
+    @RequestMapping(method=RequestMethod.DELETE)
+    public ResponseEntity<Void> delete() {
+        service.delete();
+        return ResponseEntity.noContent().build();
+    }
+
+
 }

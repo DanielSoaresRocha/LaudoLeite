@@ -31,4 +31,8 @@ public class LaudoService {
         return repo.findAll();
     }
 
+    public void delete() {
+        repo.deleteAll();
+    }
+
 }
