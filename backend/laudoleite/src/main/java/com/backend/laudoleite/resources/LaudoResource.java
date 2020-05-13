@@ -66,6 +66,19 @@ public class LaudoResource {
         service.delete();
         return ResponseEntity.noContent().build();
     }
+    @ApiOperation("Atualizar laudo do tipo FisicoQuimico")
+    @RequestMapping(value="fisicoquimico/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody FisicoQuimico obj, @PathVariable Integer id) {
+           obj.setId(id);
+           service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
 
-
+    @ApiOperation("Atualizar laudo do tipo Microbiologico ")
+    @RequestMapping(value="microbiologica/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody Microbiologica obj, @PathVariable Integer id) {
+        obj.setId(id);
+        service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
 }

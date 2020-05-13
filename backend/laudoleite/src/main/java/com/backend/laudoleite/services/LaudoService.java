@@ -34,5 +34,10 @@ public class LaudoService {
     public void delete() {
         repo.deleteAll();
     }
+    public Laudo update(Laudo obj) {
+        find(obj.getId());
+      //System.out.println(obj.toString());
+        return repo.save(obj);
+    }
 
 }
