@@ -10,12 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.data.domain.Page;
 
 import java.net.URI;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -58,6 +55,16 @@ public class LaudoResource {
         List<Laudo> list= service.findAll();
         return ResponseEntity.ok().body(list);
 
+    }
+    @ApiOperation("Listando todos os laudos por paginação")
+    @RequestMapping(value="/page", method=RequestMethod.GET)
+    public ResponseEntity<Page<Laudo>> findPage(
+            @RequestParam(value="page", defaultValue="0") Integer page,
+            @RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage,
+            @RequestParam(value="orderBy", defaultValue="cliente") String orderBy,
+            @RequestParam(value="direction", defaultValue="ASC") String direction) {
+        Page<Laudo> list = service.findPage(page, linesPerPage, orderBy, direction);
+        return ResponseEntity.ok().body(list);
     }
 
     @ApiOperation("Deletar todos os laudos (Serviço para testes")
