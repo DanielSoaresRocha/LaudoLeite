@@ -10,12 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
+import org.springframework.data.domain.Page;
 
 import java.net.URI;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @RestController
@@ -59,5 +56,36 @@ public class LaudoResource {
         return ResponseEntity.ok().body(list);
 
     }
+    @ApiOperation("Listando todos os laudos por paginação")
+    @RequestMapping(value="/page", method=RequestMethod.GET)
+    public ResponseEntity<Page<Laudo>> findPage(
+            @RequestParam(value="page", defaultValue="0") Integer page,
+            @RequestParam(value="linesPerPage", defaultValue="24") Integer linesPerPage,
+            @RequestParam(value="orderBy", defaultValue="cliente") String orderBy,
+            @RequestParam(value="direction", defaultValue="ASC") String direction) {
+        Page<Laudo> list = service.findPage(page, linesPerPage, orderBy, direction);
+        return ResponseEntity.ok().body(list);
+    }
 
+    @ApiOperation("Deletar todos os laudos (Serviço para testes")
+    @RequestMapping(method=RequestMethod.DELETE)
+    public ResponseEntity<Void> delete() {
+        service.delete();
+        return ResponseEntity.noContent().build();
+    }
+    @ApiOperation("Atualizar laudo do tipo FisicoQuimico")
+    @RequestMapping(value="fisicoquimico/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody FisicoQuimico obj, @PathVariable Integer id) {
+           obj.setId(id);
+           service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
+
+    @ApiOperation("Atualizar laudo do tipo Microbiologico ")
+    @RequestMapping(value="microbiologica/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody Microbiologica obj, @PathVariable Integer id) {
+        obj.setId(id);
+        service.update(obj);
+        return ResponseEntity.noContent().build();
+    }
 }
