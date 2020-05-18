@@ -80,7 +80,7 @@
                 clickable
               />
               <q-btn
-                @click="approveReservation()"
+                @click="approveReservation(laudo)"
                 label="confirmar"
                 color="green"
               />
@@ -153,6 +153,18 @@ export default {
     showDeniedDialog (laudo) {
       this.showDenied = true
       this.laudo = laudo
+    },
+    async approveReservation (laudo) {
+      laudo.situacao = 'analise'
+      await api.put(`/microbiologica/${laudo.id}/`, laudo)
+      this.showApproved = false
+      alert('O laudo agora está em análise')
+    },
+    async cancelReservation (laudo) {
+      laudo.situacao = 'desaprovado'
+      await api.put(`/microbiologica/${laudo.id}`, laudo)
+      this.showDenied = false
+      alert('O laudo foi excluído com sucesso')
     }
   }
 }
