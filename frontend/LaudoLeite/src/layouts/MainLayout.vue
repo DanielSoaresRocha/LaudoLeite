@@ -70,10 +70,6 @@ export default {
           path: '/RegisterReport'
         },
         {
-          label: 'Cadastrar-se',
-          icon: 'account_box',
-          path: '/Register'
-        }, {
           label: 'Laudos Pendentes',
           icon: 'account_box',
           path: '/ViewReports'

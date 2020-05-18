@@ -1,40 +1,41 @@
 <template>
-<q-layout>
-  <q-page>
-    <div class="tela q-pa-sm absolute-center">
-      <div class="cadastro absolute-center">
-        <div class="q-pa-xl">
-          <q-input
-            class="q-pb-md"
-            standout="bg-primary text-white"
-            v-model="name"
-            label="Nome"
-          />
-          <q-input
-            class="q-pb-md"
-            standout="bg-primary text-white"
-            v-model="password"
-            label="senha"
-            type="password"
-          />
-          <q-input
-            class="q-pb-md"
-            standout="bg-primary text-white"
-            v-model="passwordRepeat"
-            label="repita sua senha"
-            type="password"
-          />
-          <div class="btnCadastrar">
-            <q-btn
-              color="green"
-              label="Cadastrar"
+  <q-layout>
+    <q-page>
+      <div class="tela q-pa-sm absolute-center">
+        <div class="cadastro absolute-center">
+          <div class="q-pa-xl">
+            <q-input
+              class="q-pb-md"
+              standout="bg-primary text-white"
+              v-model="name"
+              label="Nome"
             />
+            <q-input
+              class="q-pb-md"
+              standout="bg-primary text-white"
+              v-model="password"
+              label="senha"
+              type="password"
+            />
+            <q-input
+              class="q-pb-md"
+              standout="bg-primary text-white"
+              v-model="passwordRepeat"
+              label="repita sua senha"
+              type="password"
+            />
+            <div class="btnCadastrar">
+              <q-btn
+                color="green"
+                label="Cadastrar"
+                @click="entrar"
+              />
+            </div>
           </div>
         </div>
       </div>
-    </div>
-  </q-page>
-</q-layout>
+    </q-page>
+  </q-layout>
 </template>
 
 <script>
@@ -44,6 +45,11 @@ export default {
       name: '',
       password: '',
       passwordRepeat: ''
+    }
+  },
+  methods: {
+    entrar () {
+      this.$router.push('/')
     }
   }
 }
