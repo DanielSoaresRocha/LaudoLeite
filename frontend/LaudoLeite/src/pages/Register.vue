@@ -1,4 +1,5 @@
 <template>
+<q-layout>
   <q-page>
     <div class="tela q-pa-sm absolute-center">
       <div class="cadastro absolute-center">
@@ -33,6 +34,7 @@
       </div>
     </div>
   </q-page>
+</q-layout>
 </template>
 
 <script>
