@@ -30,7 +30,7 @@ public class WebConfiguration  extends WebSecurityConfigurerAdapter {
 
     //
     private static final String[] PUBLIC_MATCHERS_GET = {
-            "//microbiologica/**"
+            "/microbiologica/**"
     };
 
     //
@@ -47,6 +47,8 @@ public class WebConfiguration  extends WebSecurityConfigurerAdapter {
         //Todos os caminhos que tiver aqui pode ser acessado, caso contrário, exige a  autenticação
         http.authorizeRequests()
                 .antMatchers(HttpMethod.GET, PUBLIC_MATCHERS_GET).permitAll()
+                .antMatchers(HttpMethod.PUT, PUBLIC_MATCHERS).permitAll()
+                .antMatchers(HttpMethod.DELETE, PUBLIC_MATCHERS).permitAll()
                 .antMatchers(PUBLIC_MATCHERS).permitAll()
                 .anyRequest().authenticated();
         http.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
