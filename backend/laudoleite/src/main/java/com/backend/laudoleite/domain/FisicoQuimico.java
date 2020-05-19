@@ -24,7 +24,7 @@ public class FisicoQuimico extends Laudo{
     private Date data_processamento;
 
 
-    public FisicoQuimico(Integer id, String cliente, String analise, String resultado, String ordem_serviço, String responsavel_coleta, Date data_coleta, String hora_coleta, String especie, String analise_solicitada, String responsavel_recebimento, String temperatura, String situacao, String leite, String origem, String produtos, Integer amostras_nao_coletadas, Integer amostras_nao_analizadas, String amostragem, Date data_processamento) {
+    public FisicoQuimico(Integer id, String cliente, String analise, String resultado, String ordem_serviço, String responsavel_coleta, Date data_coleta, String hora_coleta, String especie, String analise_solicitada, String responsavel_recebimento, String temperatura, Integer situacao, String leite, String origem, String produtos, Integer amostras_nao_coletadas, Integer amostras_nao_analizadas, String amostragem, Date data_processamento) {
         super(id, cliente, analise, resultado, ordem_serviço, responsavel_coleta, data_coleta, hora_coleta, especie, analise_solicitada, responsavel_recebimento, temperatura, situacao);
         this.leite = leite;
         this.origem = origem;

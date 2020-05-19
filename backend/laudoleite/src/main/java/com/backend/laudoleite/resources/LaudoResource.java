@@ -48,6 +48,12 @@ public class LaudoResource {
         Laudo obj = service.find(id);
         return ResponseEntity.ok().body(obj);
     }
+    @ApiOperation(value="Buscar laudo por situacao")
+    @RequestMapping(path="/emAnalise/{situacao}", method=RequestMethod.GET)
+    public ResponseEntity<?> findSituacao(@PathVariable Integer situacao) {
+        List<Laudo>  obj = service.findSituacao(situacao);
+        return ResponseEntity.ok().body(obj);
+    }
 
     @ApiOperation("Listar todos laudos cadastrados")
     @RequestMapping(method = RequestMethod.GET)

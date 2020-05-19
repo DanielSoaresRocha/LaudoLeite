@@ -35,6 +35,11 @@ public class LaudoService {
         return repo.findAll();
     }
 
+    public List<Laudo> findSituacao(Integer situacao) {
+        return repo.findBySituacao(situacao);
+    }
+
+
     public void delete() {
         repo.deleteAll();
     }
